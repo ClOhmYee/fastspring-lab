@@ -1,25 +1,35 @@
 package com.domain.spring.fastapi.controller;
 
+import com.domain.spring.dto.MessageDto;
 import com.domain.spring.fastapi.service.FastApiService;
-import com.domain.spring.fastapi.dto.FastApiRequestDto;
-import com.domain.spring.fastapi.dto.FastApiResponseDto;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@Slf4j
 @RestController
-@RequestMapping("/api/fastapi")
+@RequestMapping("/api")
+@RequiredArgsConstructor
 public class FastApiController {
 
-    private final FastApiService service;
+    private final FastApiService fastApiService;
 
-    public FastApiController(FastApiService service) {
-        this.service = service;
-    }
-
-    @PostMapping("/process")
-    public FastApiResponseDto callFastApi(@RequestBody FastApiRequestDto request) {
-        return service.process(request);
+    @GetMapping("/send")
+    public ResponseEntity<MessageDto> sendToFastApi() {
+        log.info("FastAPI 서버로 메시지 전송 시작");
+        
+        try {
+            MessageDto response = fastApiService.sendMessageToFastApi("hello");
+            log.info("FastAPI 서버 응답 수신: {}", response);
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            log.error("FastAPI 서버 통신 중 오류 발생", e);
+            return ResponseEntity.internalServerError()
+                    .body(new MessageDto("Error: " + e.getMessage()));
+        }
     }
 }
+
