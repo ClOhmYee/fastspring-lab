@@ -1,0 +1,10 @@
+servers/fastapi/venv/** linguist-vendored
+servers/fastapi/venv/** -linguist-detectable
+servers/spring-boot/spring/build/** linguist-vendored
+servers/spring-boot/spring/build/** -linguist-detectable
+servers/spring-boot/spring/gradle/** linguist-vendored
+
+servers/spring-boot/spring/gradlew text eol=lf
+*.bat text eol=crlf
+*.jar binary
+
