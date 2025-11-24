@@ -29,9 +29,6 @@ replay_pid*
 # vscode files
 .vscode/
 
-# venv files
-venv/
-
 # python files
 __pycache__/
 .pytest_cache/
