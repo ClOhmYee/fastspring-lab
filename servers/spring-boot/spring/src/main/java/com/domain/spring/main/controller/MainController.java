@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class MainController {
 
     @GetMapping("/")
-    public String redirectToApiSend() {
-        return "redirect:/api/send";
+    public String redirectToApiMessages() {
+        return "redirect:/api/messages";
     }
 }
 

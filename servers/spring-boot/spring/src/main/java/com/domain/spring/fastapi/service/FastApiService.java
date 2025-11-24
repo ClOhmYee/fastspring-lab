@@ -12,7 +12,7 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class FastApiService {
 
-    private static final String FASTAPI_URL = "http://localhost:8000/api/receive";
+    private static final String FASTAPI_URL = "http://localhost:8000/api/messages";
     private final RestTemplate restTemplate;
 
     public FastApiService() {

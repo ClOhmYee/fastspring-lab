@@ -5,7 +5,7 @@ import com.domain.spring.fastapi.service.FastApiService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -17,7 +17,7 @@ public class FastApiController {
 
     private final FastApiService fastApiService;
 
-    @GetMapping("/send")
+    @PostMapping("/messages")
     public ResponseEntity<MessageDto> sendToFastApi() {
         log.info("FastAPI 서버로 메시지 전송 시작");
         

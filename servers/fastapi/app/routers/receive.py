@@ -17,7 +17,7 @@ class MessageResponse(BaseModel):
     message: str
 
 
-@router.post("/receive", response_model=MessageResponse)
+@router.post("/messages", response_model=MessageResponse)
 async def receive(request: MessageRequest) -> MessageResponse:
 
     logger.info(f"Spring Boot로부터 메시지 수신: {request.message}")
